@@ -16,10 +16,10 @@ export class AllExceptionsFilter implements ExceptionFilter {
       args: Record<string, any>;
     };
 
-    message = await this.i18n.translate(message.key, {
-      lang: ctx.getRequest().i18nLang,
-      args: message.args,
-    });
+    // message = await this.i18n.translate(message.key, {
+    //   lang: ctx.getRequest().i18nLang,
+    //   args: message.args,
+    // });
 
     console.log('lang', ctx.getRequest().i18nLang);
 

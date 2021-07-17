@@ -13,9 +13,13 @@ import * as path from 'path';
 import { AllExceptionsFilter } from './all-exception.filter';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
+    AuthModule,
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       parser: I18nJsonParser,
@@ -29,10 +33,12 @@ import { AppService } from './app.service';
         new CookieResolver(['lang', 'locale', 'l']),
       ],
     }),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
+    AuthService,
     {
       provide: APP_FILTER,
       useClass: AllExceptionsFilter,
